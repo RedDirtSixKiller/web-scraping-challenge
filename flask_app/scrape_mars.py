@@ -48,16 +48,16 @@ def jpl_img(browser):
         #get the html
         jpl_html = browser.html
 
-        # Parse HTML with Beautiful Soup
+        # parse html
         soup = bs(jpl_html, 'html.parser')
 
         # Retrieve background-image url from style tag. The image url is a relative path with some panethses and quotes.
         featured_image_url  = soup.find('article')['style'].replace('background-image: url(','').replace(');', '')[1:-1]
 
-        # Website Url 
+        # jpl url
         main_url = 'https://www.jpl.nasa.gov'
 
-        # Concatenate website url with scrapped route
+        # put the whole url together
         featured_image_url = main_url + featured_image_url
     except:
         return None
